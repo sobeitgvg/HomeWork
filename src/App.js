@@ -1,8 +1,9 @@
 
 import './App.css';
-import { Fragment } from 'react';
+import {Fragment } from 'react';
 import {Button} from './components/massage/massage'
- 
+import {Massagelist} from './components/massage/massagelist'
+
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       return (
         <Fragment>
           <Button onButtonClick = {handleBtn} title={greet}/>
+          <Massagelist/>
         </Fragment>
       ); 
 }
