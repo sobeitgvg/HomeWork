@@ -2,13 +2,15 @@ import React from "react";
 import {Form} from "./form"
 import { Persons } from "../../tools/persons";
 
+
 export const Massagelist = () =>{
+
     const [massageBlog, setMassageBlog] = React.useState([])
     const addMassage = (newMassage) => { 
         setMassageBlog((prevMassageList)=>[...prevMassageList, newMassage])
     }
     const handleSubmit = (massage) =>{
-        const newMassage = {massage, author:Persons.Human}
+        const newMassage = {massage, author:Persons.Human, id: `msg-${Date.now()}`}
         addMassage(newMassage)
     }
 
@@ -16,8 +18,8 @@ export const Massagelist = () =>{
         let timeout;
         if (massageBlog[massageBlog.length-1]?.author === Persons.Human){
             timeout = setTimeout(() =>{
-            addMassage({massage: `I'm Bot`, author:Persons.Bot})
-            }, 1000)}
+            addMassage({massage: `I'm Bot`, author:Persons.Bot, id: `msg-${Date.now()}`, })  
+        }, 1000)}
             return () => {
                 clearTimeout(timeout)
             }
@@ -26,8 +28,8 @@ export const Massagelist = () =>{
     return(
         <div>
             <Form onSubmit = {handleSubmit} />
-            {massageBlog.map(({massage, author})=>
-            <div className= {author === Persons.Human ? 'msg-human' : 'msg-bot'}>
+            {massageBlog.map(({massage, author, id})=>
+            <div  key = {id} className = {author === Persons.Human ? 'msg-human' : 'msg-bot'}>
                 {author}:{massage}
             </div>
             )}
