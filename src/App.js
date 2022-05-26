@@ -1,17 +1,14 @@
-
 import './App.css';
-import {Fragment } from 'react';
-import {Massagelist} from './components/massage/massagelist';
-
+import {Router} from './components/router';
 
 
 function App() {
 
-      return (
-        <Fragment>
-          <Massagelist/>
-        </Fragment>
-      ); 
+  return(
+    <>
+<Router/>
+</>
+  )
 }
 
 export default App;
